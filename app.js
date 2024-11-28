@@ -1,4 +1,6 @@
 const express = require("express");
+const puppeteer = require('puppeteer');
+const html = puppeteer;
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -9,7 +11,7 @@ const server = app.listen(port, () => console.log(`Example app listening on port
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
 
-const puppeteer = require('puppeteer');
+
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -22,7 +24,7 @@ const puppeteer = require('puppeteer');
 
 app.get("/", (req, res) => res.type('html').send(html));
 
-const html = `
+const htmlx = `
 <!DOCTYPE html>
 <html>
   <head>
