@@ -43,7 +43,7 @@ server.headersTimeout = 120 * 1000;
 
 app.get("/", (req, res) => res.type('html').send(html));
 
-const htmlx = `
+const html = `
 <!DOCTYPE html>
 <html>
   <head>
@@ -88,7 +88,7 @@ const htmlx = `
   </head>
   <body>
     <section>
-      Hello from Render HERVE VERSION 22!
+      Hello from Render HERVE VERSION 22! ` + puppeteer + `
     </section>
   </body>
 </html>
