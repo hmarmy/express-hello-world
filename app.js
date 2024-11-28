@@ -1,26 +1,45 @@
 const express = require("express");
 const puppeteer = require('puppeteer');
-const html = puppeteer;
+
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Main function to test Puppeteer
+async function testPuppeteer() {
+  try {
+    // Launch the browser in headless mode with necessary options
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
 
+    // Create a new page in the browser
+    const page = await browser.newPage();
+
+    // Navigate to an example page
+    await page.goto('https://www.google.com');
+
+    // Get the page title
+    const title = await page.title();
+    console.log(`Page title (Google): ${title}`);
+
+    // Close the browser
+    await browser.close();
+
+    console.log('Puppeteer is working correctly!');
+  } catch (error) {
+    // Handle errors if Puppeteer doesn't work correctly
+    console.error('Error during Puppeteer usage:', error);
+  }
+}
+
+// Run the test function
+testPuppeteer();
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
-
-
-
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-
-  await page.goto('https://developers.google.com/web/');
-
-  console.log(browser);
-})
 
 app.get("/", (req, res) => res.type('html').send(html));
 
@@ -69,7 +88,7 @@ const htmlx = `
   </head>
   <body>
     <section>
-      Hello from Render HERVE VERSION!
+      Hello from Render HERVE VERSION 22!
     </section>
   </body>
 </html>
