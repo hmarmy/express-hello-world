@@ -88,7 +88,7 @@ const html = `
   </head>
   <body>
     <section>
-      Hello from Render HERVE VERSION 22! ` + puppeteer + `
+      Hello from Render HERVE VERSION 232! ` + puppeteer + `
     </section>
   </body>
 </html>
